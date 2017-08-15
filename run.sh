@@ -1,6 +1,6 @@
 #!/bin/bash
 
-docker run --name litecoin-testbox -tid \
+docker run --name litecoin-regtest -tid \
   -p 9332:9332 \
   -p 9333:9333 \
   -p 19332:19332 \
