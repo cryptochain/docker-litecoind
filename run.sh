@@ -5,11 +5,11 @@ docker run --name litecoin-regtest -tid \
   -p 20011:20011 \
   cryptochain/litecoind-docker:latest \
   --printtoconsole \
-  -server \
-  -listen \
-  -port=20001 \
+  -server=1 \
+  -listen=1 \
   -regtest=1 \
+  -port=20001 \
   -rpcallowip=0.0.0.0/0 \
-  -rpcpassword=admin1 \
-  -rpcuser=123 \
+  -rpcuser=admin1 \
+  -rpcpassword=123 \
   -rpcport=20011
