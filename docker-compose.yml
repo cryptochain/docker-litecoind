@@ -1,0 +1,31 @@
+version: '3.3'
+services:
+  litecoin-testnet:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    command: --printtoconsole -server=1 -listen=1 -testnet=1 -port=20001 -rpcallowip=0.0.0.0/0 -rpcuser=admin1 -rpcpassword=123 -rpcport=20011
+    deploy:
+      endpoint_mode: vip
+      mode: replicated
+      replicas: 1
+      restart_policy:
+        condition: any
+        delay: 10s
+      placement:
+        constraints: [node.hostname == vm01]
+    image: testing.wemic.io:5000/cryptochain/litecoin-testnet
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "100k"
+        max-file: "10"
+    networks:
+      - web-services
+    ports:
+      - 20001:20001
+      - 20011:20011
+
+networks:
+  web-services:
+    external: true
