@@ -13,7 +13,7 @@ RUN useradd -r litecoin \
   && curl -o /usr/local/bin/gosu -L https://github.com/tianon/gosu/releases/download/${GOSU_VERSION}/gosu-$(dpkg --print-architecture) \
 	&& chmod +x /usr/local/bin/gosu
 
-ENV LITECOIN_VERSION=0.14.2 \
+ENV LITECOIN_VERSION=0.17.1 \
   LITECOIN_DATA=/home/litecoin/.litecoin
 
 ENV LITECOINT_ARCHIVE_FILE=litecoin-${LITECOIN_VERSION}-x86_64-linux-gnu.tar.gz
