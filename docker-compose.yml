@@ -1,10 +1,11 @@
 version: '3.3'
 services:
   litecoin-testnet:
-    build:
-      context: ./
-      dockerfile: Dockerfile
-    command: --printtoconsole -txindex=1 -server=1 -listen=1 -testnet=1 -port=20001 -rpcallowip=0.0.0.0/0 -rpcuser=admin1 -rpcpassword=123 -rpcport=20011
+    image: uphold/litecoin-core
+    #build:
+    #  context: ./
+    #  dockerfile: Dockerfile
+    command: --printtoconsole -txindex=1 -server=1 -listen=1 -testnet=1 -rpcallowip=0.0.0.0/0 -rpcuser=admin1 -rpcpassword=123
     logging:
       driver: "json-file"
       options:
@@ -12,10 +13,15 @@ services:
         max-file: "10"
     networks:
       - crypto-p2p-services
+    volumes:
+      - litecoin-testnet:/home/litecoin/.litecoin
     ports:
-      - 20001:20001
-      - 20011:20011
+      - 19332:19332
+      - 19333:19333 #p2p
 
 networks:
   crypto-p2p-services:
     external: true
+
+volumes:
+  litecoin-testnet:
