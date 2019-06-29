@@ -11,11 +11,11 @@ services:
         max-size: "100k"
         max-file: "10"
     networks:
-      - web-services
+      - crypto-p2p-services
     ports:
       - 20001:20001
       - 20011:20011
 
 networks:
-  web-services:
+  crypto-p2p-services:
     external: true
